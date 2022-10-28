@@ -3,7 +3,7 @@
     <h1>Fazer cadastro</h1>
 
     <div>
-      <form action="">
+      <form @submit.prevent="enviar">
         <label for="">Nome</label>
         <input type="text" v-model="user.nome" /> <br />
 
@@ -37,11 +37,23 @@
           </option>
         </select>
         <br />
+
+        <label for="">Qual seu nível?</label>
+        <span><input type="radio" value="basico" v-model="nivel" />Básico</span>
+        <span>
+          <input type="radio" value="intermediario" v-model="nivel" />
+          Intermediário
+        </span>
+        <span>
+          <input type="radio" value="avancado" v-model="nivel" />Avançado
+        </span>
+
+        <button type="submit">Enviar</button>
       </form>
     </div>
 
     <hr />
-    <div class="item">
+    <div class="item" v-show="resultado">
       <h2>Usuário cadastrado</h2>
 
       <label for="">Nome: {{ user.nome }}</label> <br />
@@ -53,6 +65,7 @@
         <li v-for="tech in tecnologias" :key="tech">{{ tech }}</li>
       </ul>
       <label>Tipo de Contratação: {{ tipoSelecionado }}</label> <br />
+      <label>Nível atual: {{ nivel }}</label> <br />
     </div>
   </div>
 </template>
@@ -76,7 +89,15 @@ export default {
         { id: 4, nome: "Remoto" },
       ],
       tipoSelecionado: "Freelancer",
+      nivel: "basico",
+      resultado: false,
     };
+  },
+  methods: {
+    enviar() {
+      alert("Cadastrado com sucesso");
+      this.resultado = true;
+    },
   },
 };
 </script>
