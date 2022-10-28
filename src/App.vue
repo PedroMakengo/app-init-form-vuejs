@@ -1,17 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <h1>Fazer cadastro</h1>
+
+    <div>
+      <form action="">
+        <label for="">Nome</label>
+        <input type="text" v-model="nome" /> <br />
+      </form>
+    </div>
+
+    <hr />
+    <div class="item">
+      <h2>Usuário cadastrado</h2>
+
+      <label for="">Nome: {{ nome }}</label>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      nome: "",
+    };
+  },
+};
 </script>
 
 <style>
@@ -19,7 +34,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
